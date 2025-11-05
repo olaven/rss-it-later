@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>776</IntrospectionStateNumber>
+      <IntrospectionStateNumber>792</IntrospectionStateNumber>
       <ServerVersion>18.0</ServerVersion>
       <StartupTime>1762351799</StartupTime>
       <TimeZones>true ACDT
@@ -699,7 +699,7 @@ false posixrules
 13293||10|C|G
 13293||-9223372036854775808|U|G
 13293||10|U|G</Grants>
-      <IntrospectionStateNumber>776</IntrospectionStateNumber>
+      <IntrospectionStateNumber>792</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>default</OwnerName>
     </database>
@@ -4220,148 +4220,14 @@ false posixrules
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <LastIntrospectionL1Xid>776</LastIntrospectionL1Xid>
-      <LastIntrospectionL2Xid>776</LastIntrospectionL2Xid>
-      <LastIntrospectionL3Xid>776</LastIntrospectionL3Xid>
+      <LastIntrospectionL1Xid>792</LastIntrospectionL1Xid>
+      <LastIntrospectionL2Xid>792</LastIntrospectionL2Xid>
+      <LastIntrospectionL3Xid>792</LastIntrospectionL3Xid>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-11-05.15:39:49</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-11-05.18:34:49</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>546</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
-    <table id="273" parent="272" name="articles">
-      <DetailsLevel>2</DetailsLevel>
-      <ObjectId>16422</ObjectId>
-      <StateNumber>775</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>default</OwnerName>
-    </table>
-    <table id="274" parent="272" name="user">
-      <DetailsLevel>2</DetailsLevel>
-      <ObjectId>16410</ObjectId>
-      <StateNumber>775</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>default</OwnerName>
-    </table>
-    <column id="275" parent="273" name="id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>uuid|0s</StoredType>
-      <TypeId>2950</TypeId>
-    </column>
-    <column id="276" parent="273" name="title">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="277" parent="273" name="description">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="278" parent="273" name="created_at">
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>timestamp with time zone|0s</StoredType>
-      <TypeId>1184</TypeId>
-    </column>
-    <column id="279" parent="273" name="url">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="280" parent="273" name="user_id">
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>uuid|0s</StoredType>
-      <TypeId>2950</TypeId>
-    </column>
-    <foreign-key id="281" parent="273" name="fk_articles_user_id__id">
-      <ColNames>user_id</ColNames>
-      <ObjectId>16435</ObjectId>
-      <OnDelete>restrict</OnDelete>
-      <OnUpdate>restrict</OnUpdate>
-      <StateNumber>775</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16410</RefTableId>
-    </foreign-key>
-    <index id="282" parent="273" name="articles_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16433</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>775</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="283" parent="273" name="articles_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16434</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>775</StateNumber>
-      <UnderlyingIndexId>16433</UnderlyingIndexId>
-    </key>
-    <column id="284" parent="274" name="id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>uuid|0s</StoredType>
-      <TypeId>2950</TypeId>
-    </column>
-    <column id="285" parent="274" name="api_key">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="286" parent="274" name="last_seen">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>timestamp with time zone|0s</StoredType>
-      <TypeId>1184</TypeId>
-    </column>
-    <column id="287" parent="274" name="created_at">
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>775</StateNumber>
-      <StoredType>timestamp with time zone|0s</StoredType>
-      <TypeId>1184</TypeId>
-    </column>
-    <index id="288" parent="274" name="user_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16419</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>775</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="289" parent="274" name="user_api_key">
-      <ColNames>api_key</ColNames>
-      <ObjectId>16421</ObjectId>
-      <StateNumber>775</StateNumber>
-      <AccessMethodId>403</AccessMethodId>
-      <CollationNames>default</CollationNames>
-      <CollationIds>100</CollationIds>
-      <CollationParentNames>pg_catalog</CollationParentNames>
-    </index>
-    <key id="290" parent="274" name="user_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16420</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>775</StateNumber>
-      <UnderlyingIndexId>16419</UnderlyingIndexId>
-    </key>
   </database-model>
 </dataSource>
