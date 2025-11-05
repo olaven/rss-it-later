@@ -12,6 +12,7 @@ repositories {
 dependencies {
     implementation("io.javalin:javalin:6.7.0")
     implementation("org.slf4j:slf4j-simple:2.0.16")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
     testImplementation(kotlin("test"))
 }
 
