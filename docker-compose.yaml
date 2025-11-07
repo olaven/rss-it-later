@@ -1,4 +1,16 @@
 services:
+  webserver:
+    build: .
+    env_file: ".env"
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      - PORT=${PORT}
+      - PGUSER=${PGUSER}
+      - PGPASSWORD=${PGPASSWORD}
+      - PGDATABASE=${PGDATABASE}
+      - PGPORT=${PGPORT}
+      - PGHOST=database
   database:
     image: postgres:18
     env_file: ".env"
