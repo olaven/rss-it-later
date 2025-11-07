@@ -107,6 +107,17 @@ class WebsiteHandler : Handler {
                                 }"
                             }
                         }
+                        div {
+                            h3 { +"Get Access" }
+                            p {
+                                +"This is a proof of concept. If you want access, feel free to "
+                                a {
+                                    href = "mailto:olav@sundfoer.com"
+                                    +"email me"
+                                }
+                                +" and I will provide you with an API key."
+                            }
+                        }
                     }
                     a(classes = "github-fork-ribbon") {
                         href = "https://github.com/olaven/rss-it-later"
