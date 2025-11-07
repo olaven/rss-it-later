@@ -4,20 +4,18 @@ import io.javalin.Javalin
 import org.olaven.rssitlater.database.entities.crudelyMigrate
 import org.olaven.rssitlater.handlers.GetFeedHandler
 import org.olaven.rssitlater.handlers.PostArticleHandler
-import org.olaven.rssitlater.handlers.helloWorldHandler
+import org.olaven.rssitlater.handlers.WebsiteHandler
 
 fun main() {
 
     crudelyMigrate()
-
-    val app = buildApp()
-    app.start(7070)
+    buildApp().start(environment["PORT"].toInt())
 }
 
 fun buildApp(): Javalin {
     return Javalin.create()
-        .get("/", helloWorldHandler)
-        .get("/api/get-feed", GetFeedHandler())
-        .post("/api/articles", PostArticleHandler())
+        .get("/", WebsiteHandler())
+        .get("/feed", GetFeedHandler())
+        .post("/feed/articles", PostArticleHandler())
 }
 

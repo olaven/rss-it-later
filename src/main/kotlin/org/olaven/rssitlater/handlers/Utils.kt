@@ -6,6 +6,7 @@ import org.olaven.rssitlater.database.entities.User
 import org.olaven.rssitlater.database.repositories.UserRepository
 
 fun getApiKey(request: HttpServletRequest): String? {
+
     val unparsedHeaderValue = request.getHeader(Header.AUTHORIZATION) ?: return null
 
     val bearerPrefix = "Bearer "

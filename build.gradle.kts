@@ -1,14 +1,21 @@
-import java.net.URI
-
 plugins {
     kotlin("jvm") version "2.2.20"
     kotlin("plugin.serialization") version "2.2.20"
+    application
 }
 
 group = "org.olaven.rssitlater"
 version = "1.0-SNAPSHOT"
 
+application {
+    mainClass = "org.olaven.rssitlater.MainKt"
+}
 
+
+
+tasks.register<Exec>("dev") {
+    commandLine("watchexec", "-r", "-w", "src", "--", "./gradlew", "run")
+}
 
 repositories {
     mavenCentral()
@@ -21,7 +28,10 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
     // serialization
     implementation("org.redundent:kotlin-xml-builder:1.9.2")
-
+    // website HTML DSL
+    implementation("org.jetbrains.kotlinx:kotlinx-html:0.12.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.12.0")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-css:2025.11.4")
     // database
     // - postgres driver
     implementation("org.postgresql:postgresql:42.7.8")

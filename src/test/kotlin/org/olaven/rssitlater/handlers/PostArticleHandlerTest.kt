@@ -60,8 +60,6 @@ class PostArticleHandlerTest() : ProtectedHandlerTest(
     fun `returns 201 if article is created`() = JavalinTest.test(app) { server, client ->
         val response = client.authorizedPostArticle(
             body = ArticleBody(
-                title = "title",
-                description = "description",
                 url = "https://example.com"
             )
         )
@@ -71,8 +69,6 @@ class PostArticleHandlerTest() : ProtectedHandlerTest(
     @Test
     fun `returns JSON if article is created`() = JavalinTest.test(app) { server, client ->
         val articleBody = ArticleBody(
-            title = "title",
-            description = "description",
             url = "https://example.com"
         )
         val response = client.authorizedPostArticle(
@@ -80,9 +76,7 @@ class PostArticleHandlerTest() : ProtectedHandlerTest(
         )
 
         val jsonNode = objectMapper.readTree(response.body!!.string())
-
-        assertThat(jsonNode["title"].asText()).isEqualTo(articleBody.title)
-        assertThat(jsonNode["description"].asText()).isEqualTo(articleBody.description)
+        
         assertThat(jsonNode["url"].asText()).isEqualTo(articleBody.url)
     }
 }

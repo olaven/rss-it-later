@@ -8,23 +8,21 @@ import org.olaven.rssitlater.database.entities.Article
 import org.olaven.rssitlater.database.repositories.ArticleRepository
 
 
-data class ArticleBody(val title: String, val description: String, val url: String)
+data class ArticleBody(val url: String)
 
 class PostArticleHandler : Handler {
     override fun handle(ctx: Context) {
         return protectedHandler(ctx) { user ->
 
-
             val articleData = ctx.bodyValidator(ArticleBody::class.java)
-                .check({ it.title.isNotBlank() }, "Title cannot be blank")
                 .check({ it.url.matches(Regex("^https?://.*")) }, "Invalid URL format")
                 .getOrThrow { BadRequestResponse() }
 
-
+            //TODO: Extract title and description
             val articleRepository = ArticleRepository()
             val insertedArticle = articleRepository.insertArticle(
-                title = articleData.title,
-                description = articleData.description,
+                title = "TEST TITLE",
+                description = "TEST DESCRIPTION",
                 url = articleData.url,
                 userId = user.id
             )

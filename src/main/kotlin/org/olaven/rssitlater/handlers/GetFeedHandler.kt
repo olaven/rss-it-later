@@ -7,7 +7,6 @@ import org.olaven.rssitlater.database.repositories.ArticleRepository
 import org.olaven.rssitlater.services.RssService
 
 class GetFeedHandler : Handler {
-    // TODO: move some of this out of the handler
     // TODO: write automated tests
     override fun handle(ctx: Context) {
         return protectedHandler(ctx) { user ->
@@ -19,7 +18,5 @@ class GetFeedHandler : Handler {
             val feed = rssService.buildFeed(articles)
             ctx.result(feed).header(Header.CONTENT_TYPE, "application/rss+xml")
         }
-
     }
-
 }

@@ -1,4 +1,5 @@
 import net.datafaker.Faker
+import org.olaven.rssitlater.DatabaseTest
 import org.olaven.rssitlater.database.entities.Article
 import org.olaven.rssitlater.database.entities.User
 import org.olaven.rssitlater.database.repositories.ArticleRepository
