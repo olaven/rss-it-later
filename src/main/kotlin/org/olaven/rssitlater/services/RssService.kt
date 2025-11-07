@@ -18,8 +18,8 @@ class RssService {
             attribute("version", "2.0")
             attribute("xmlns:atom", "http://www.w3.org/2005/Atom")
             "channel" {
-                "title" { -"Instapaper: Unread" }
-                "link" { -"https://instapaper.com/u" }
+                "title" { -"RSS It Later" }
+                "link" { -"TODO" }
                 "description" { -"Your unread articles" }
 
                 articles.forEach { article ->
