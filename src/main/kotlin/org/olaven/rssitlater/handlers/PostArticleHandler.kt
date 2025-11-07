@@ -1,9 +1,12 @@
 package org.olaven.rssitlater.handlers
 
+import ArticleExtractorService
 import io.javalin.http.BadRequestResponse
 import io.javalin.http.Context
 import io.javalin.http.Handler
 import io.javalin.http.HttpStatus
+import io.javalin.http.InternalServerErrorResponse
+import kotlinx.coroutines.runBlocking
 import org.olaven.rssitlater.database.entities.Article
 import org.olaven.rssitlater.database.repositories.ArticleRepository
 
@@ -18,13 +21,23 @@ class PostArticleHandler : Handler {
                 .check({ it.url.matches(Regex("^https?://.*")) }, "Invalid URL format")
                 .getOrThrow { BadRequestResponse() }
 
-            //TODO: Extract title and description
+            val articleExtractorService = ArticleExtractorService()
+            val extractedArticle = runBlocking { articleExtractorService.extract(url = articleData.url) }
+
+            if (extractedArticle == null) {
+                throw BadRequestResponse("Failed to extract article")
+            }
+
+            if (extractedArticle.title == null) {
+                throw InternalServerErrorResponse("Failed to extract title")
+            }
+
             val articleRepository = ArticleRepository()
             val insertedArticle = articleRepository.insertArticle(
-                title = "TEST TITLE",
-                description = "TEST DESCRIPTION",
-                url = articleData.url,
-                userId = user.id
+                title = extractedArticle.title,
+                description = extractedArticle.description ?: "",
+                url = extractedArticle.url,
+                userId = user.id,
             )
 
             ctx.status(HttpStatus.CREATED).json(insertedArticle, Article::class.java)

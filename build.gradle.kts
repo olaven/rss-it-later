@@ -26,6 +26,7 @@ dependencies {
     implementation("org.slf4j:slf4j-simple:2.0.16")
     implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
+    implementation("com.chimbori.crux:crux:5.1.0")
     // serialization
     implementation("org.redundent:kotlin-xml-builder:1.9.2")
     // website HTML DSL
