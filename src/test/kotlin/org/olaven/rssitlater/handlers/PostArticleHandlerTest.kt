@@ -23,30 +23,29 @@ class PostArticleHandlerTest() : ProtectedHandlerTest(
 
 
     fun HttpClient.authorizedPostArticle(body: ArticleBody? = null) =
-        this.postArticle(mapOf("Authorization" to "Bearer ${testUser.apiKey}"), body)
+        this.postArticle(testUser.apiKey, body)
 
     fun HttpClient.postArticle(
-        headers: Map<String, String> = emptyMap(),
+        apiKey: String?,
         body: ArticleBody? = null
-    ) = this.request("/api/articles") { builder ->
+    ) = this.request("/feed/articles${apiKey?.let { "?api-key=$apiKey" } ?: ""}") { builder ->
 
         val jsonBody = body?.let { objectMapper.writeValueAsString(it) } ?: ""
         val requestBody = jsonBody.toRequestBody("application/json".toMediaType())
 
         builder.method("POST", requestBody)
-        headers.forEach { (key, value) -> builder.header(key, value) }
     }
 
 
     @Test
     fun `returns bad request if auth header is not defined`() = JavalinTest.test(app) { server, client ->
-        val response = client.postArticle(emptyMap())
+        val response = client.postArticle(null)
         assertThat(response.code).isEqualTo(HttpStatus.BAD_REQUEST.code)
     }
 
     @Test
     fun `returns 401 if token is wrong`() = JavalinTest.test(app) { server, client ->
-        val response = client.postArticle(mapOf("Authorization" to "Bearer ${UUID.randomUUID()}"))
+        val response = client.postArticle(UUID.randomUUID().toString())
         assertThat(response.code).isEqualTo(HttpStatus.UNAUTHORIZED.code)
     }
 
@@ -76,7 +75,7 @@ class PostArticleHandlerTest() : ProtectedHandlerTest(
         )
 
         val jsonNode = objectMapper.readTree(response.body!!.string())
-        
+
         assertThat(jsonNode["url"].asText()).isEqualTo(articleBody.url)
     }
 }

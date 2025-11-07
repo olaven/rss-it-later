@@ -1,19 +1,13 @@
 package org.olaven.rssitlater.handlers
+
 import io.javalin.http.Context
-import io.javalin.http.Header
 import jakarta.servlet.http.HttpServletRequest
 import org.olaven.rssitlater.database.entities.User
 import org.olaven.rssitlater.database.repositories.UserRepository
 
 fun getApiKey(request: HttpServletRequest): String? {
 
-    val unparsedHeaderValue = request.getHeader(Header.AUTHORIZATION) ?: return null
-
-    val bearerPrefix = "Bearer "
-    return unparsedHeaderValue
-        .takeIf { it.startsWith(bearerPrefix) }
-        ?.substringAfter(bearerPrefix)
-        ?.trim()
+    return request.getParameter("api-key")
 }
 
 fun protectedHandler(ctx: Context, fn: (user: User) -> Unit) {
