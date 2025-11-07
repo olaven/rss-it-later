@@ -18,6 +18,7 @@ dependencies {
     implementation("io.javalin:javalin:6.7.0")
     implementation("org.slf4j:slf4j-simple:2.0.16")
     implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
     // serialization
     implementation("org.redundent:kotlin-xml-builder:1.9.2")
 
@@ -35,6 +36,9 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
     testImplementation("net.datafaker:datafaker:2.5.3")
+    testImplementation("io.mockk:mockk:1.14.6")
+    testImplementation("io.javalin:javalin-bundle:6.7.0")
+    testImplementation("org.assertj:assertj-core:3.27.3")
 }
 
 tasks.test {

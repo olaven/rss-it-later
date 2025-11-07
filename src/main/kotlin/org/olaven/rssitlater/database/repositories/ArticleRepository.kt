@@ -9,7 +9,7 @@ import org.olaven.rssitlater.database.entities.toArticle
 import java.util.*
 
 class ArticleRepository {
-    fun insertArticle(title: String, description: String, url: String, userId: UUID): Article? {
+    fun insertArticle(title: String, description: String, url: String, userId: UUID): Article {
         return transactionOrCurrent {
             ArticlesTable.insert {
                 it[ArticlesTable.title] = title
@@ -17,7 +17,7 @@ class ArticleRepository {
                 it[ArticlesTable.url] = url
                 it[ArticlesTable.userId] = userId
             }.resultedValues?.map { it.toArticle() }?.firstOrNull()
-        }
+        }?: throw Error("Failed to insert article")
     }
 
     fun getArticlesByUserId(userId: UUID): List<Article> {
