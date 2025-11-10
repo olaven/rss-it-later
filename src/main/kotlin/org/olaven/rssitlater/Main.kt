@@ -9,7 +9,7 @@ import org.olaven.rssitlater.handlers.WebsiteHandler
 fun main() {
 
     crudelyMigrate()
-    buildApp().start(environment["PORT"].toInt())
+    buildApp().start("0.0.0.0",environment["PORT"].toInt())
 }
 
 fun buildApp(): Javalin {
