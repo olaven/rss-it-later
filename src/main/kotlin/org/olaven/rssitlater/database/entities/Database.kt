@@ -8,8 +8,8 @@ import org.olaven.rssitlater.environment
 // TODO: make this more generic
 fun connectDatabase(): Database {
     return Database.connect(
-        url = "jdbc:${environment["DATABASE_URL"]}",
-//        url = "jdbc:postgresql://${environment["PGHOST"]}:${environment["PGPORT"]}/${environment["PGDATABASE"]}",
+//        url = "jdbc:${environment["DATABASE_URL"]}",
+        url = "jdbc:postgresql://${environment["PGHOST"]}:${environment["PGPORT"]}/${environment["PGDATABASE"]}",
         driver = "org.postgresql.Driver",
     )
 }
