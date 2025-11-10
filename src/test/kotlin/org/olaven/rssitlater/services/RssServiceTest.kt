@@ -24,7 +24,7 @@ class RssServiceTest {
 
     @Test
     fun `the service returns a string`() {
-        val rss= service.buildFeed(articles)
+        val rss= service.buildFeed(articles, "api-key")
         assertNotEquals(rss.length, 0)
     }
 }

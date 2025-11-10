@@ -15,7 +15,7 @@ class GetFeedHandler : Handler {
             val articles = articleRepository.getArticlesByUserId(user.id)
 
             val rssService = RssService()
-            val feed = rssService.buildFeed(articles)
+            val feed = rssService.buildFeed(articles, user.apiKey)
             ctx.result(feed).header(Header.CONTENT_TYPE, "application/rss+xml")
         }
     }

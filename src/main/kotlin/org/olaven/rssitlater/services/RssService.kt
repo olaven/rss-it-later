@@ -13,14 +13,21 @@ class RssService {
         return dateTime.format(formatter)
     }
 
-    fun buildFeed(articles: List<Article>): String {
+    fun buildFeed(articles: List<Article>, userApiKey: String): String {
+        val baseUrl = "https://rss-it-later.fly.dev"
+        val feedUrl = "${baseUrl}/feed?api-key=${userApiKey}"
         return xml("rss") {
             attribute("version", "2.0")
             attribute("xmlns:atom", "http://www.w3.org/2005/Atom")
             "channel" {
                 "title" { -"RSS It Later" }
-                "link" { -"TODO" }
+                "link" { -baseUrl }
                 "description" { -"Your unread articles" }
+                "atom:link" {
+                    attribute("href", feedUrl)
+                    attribute("rel", "self")
+                    attribute("type", "application/rss+xml")
+                }
 
                 articles.forEach { article ->
                     "item" {
