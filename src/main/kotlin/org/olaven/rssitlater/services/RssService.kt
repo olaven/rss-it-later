@@ -23,6 +23,11 @@ class RssService {
                 "title" { -"RSS It Later" }
                 "link" { -baseUrl }
                 "description" { -"Your unread articles" }
+                "image" {
+                    "url" { -"${baseUrl}/logo.svg" }
+                    "title" { -"RSS It Later" }
+                    "link" { -baseUrl }
+                }
                 "atom:link" {
                     attribute("href", feedUrl)
                     attribute("rel", "self")

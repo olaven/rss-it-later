@@ -13,7 +13,9 @@ fun main() {
 }
 
 fun buildApp(): Javalin {
-    return Javalin.create()
+    return Javalin.create { config ->
+        config.staticFiles.add("/public")
+    }
         .get("/", WebsiteHandler())
         .get("/feed", GetFeedHandler())
         .post("/feed/articles", PostArticleHandler())

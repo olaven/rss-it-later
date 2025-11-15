@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background matching website text color -->
+  <rect width="200" height="200" fill="#2d2d2d" rx="20"/>
+
+  <!-- RSS feed icon - three horizontal lines matching website bg color -->
+  <g fill="#f5f3ed">
+    <rect x="40" y="70" width="90" height="8" rx="4"/>
+    <rect x="40" y="95" width="110" height="8" rx="4"/>
+    <rect x="40" y="120" width="70" height="8" rx="4"/>
+  </g>
+
+  <!-- Arrow matching website accent color -->
+  <g fill="#4a7c59">
+    <path d="M 155 60 L 155 95 L 140 95 L 160 115 L 180 95 L 165 95 L 165 60 Z"/>
+  </g>
+</svg>

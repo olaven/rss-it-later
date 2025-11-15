@@ -127,15 +127,6 @@ class WebsiteHandler : Handler {
             color = Color("#999")
         }
 
-        rule(".service-box") {
-            padding = Padding(2.rem)
-            backgroundColor = Color("var(--accent)")
-            color = Color.white
-            border = Border(2.px, BorderStyle.solid, Color("var(--text)"))
-            fontWeight = FontWeight.bold
-            fontSize = 1.5.rem
-        }
-
         rule(".arrow") {
             fontSize = 2.rem
             color = Color("var(--text)")
@@ -171,11 +162,6 @@ class WebsiteHandler : Handler {
                 font-size: 0.7rem;
             }
 
-            .service-box {
-                padding: 1.5rem;
-                font-size: 1.2rem;
-            }
-
             .arrow {
                 transform: rotate(90deg);
                 font-size: 1.5rem;
@@ -190,6 +176,11 @@ class WebsiteHandler : Handler {
                     title { +"RSS It Later" }
                     meta(charset = "UTF-8")
                     meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
+                    link {
+                        rel = "icon"
+                        type = "image/svg+xml"
+                        href = "/logo.svg"
+                    }
                     link {
                         rel = "stylesheet"
                         href = "https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"
@@ -234,8 +225,11 @@ class WebsiteHandler : Handler {
 
                             // Center column - RSS It Later
                             div(classes = "flow-column center") {
-                                div(classes = "service-box") {
-                                    +"RSS It Later"
+                                img {
+                                    src = "/logo.svg"
+                                    alt = "RSS It Later Logo"
+                                    width = "120"
+                                    height = "120"
                                 }
                             }
 
